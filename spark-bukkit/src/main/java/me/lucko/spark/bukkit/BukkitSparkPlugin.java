@@ -190,6 +190,9 @@ public class BukkitSparkPlugin extends JavaPlugin implements SparkPlugin {
         if (classExists("com.destroystokyo.paper.event.server.ServerTickEndEvent")) {
             return new PaperTickReporter(this);
         }
+        if (LegacyTickReporter.isSupported(getServer())) {
+            return new LegacyTickReporter(this);
+        }
         return null;
     }
 
